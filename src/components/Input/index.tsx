@@ -17,7 +17,7 @@ interface IInput extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input = ({ name, icon: Icon, ...rest }: IInput) => {
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
@@ -42,8 +42,15 @@ const Input = ({ name, icon: Icon, ...rest }: IInput) => {
     });
   }, [fieldName, registerField]);
 
+  useEffect(() => {
+    console.log('1',inputRef.current);
+    
+  }, [inputRef])
   return (
-    <Container isFilled={isFilled} isFocused={isFocused}>
+    <Container 
+      isFilled={isFilled} 
+      isFocused={isFocused}
+    >
       {Icon && <Icon size={20} />}
 
       <input

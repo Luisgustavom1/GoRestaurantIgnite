@@ -19,7 +19,6 @@ const Dashboard = () => {
         .then(res =>     
           setFoods( res.data )
         )
-
   }, [])
 
   const handleAddFood = async (food: food) => {
